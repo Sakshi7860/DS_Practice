@@ -1,18 +1,21 @@
 package DS;
+
+import java.util.Stack;
+
 public class LinkedList {
 	Node head;
 	class Node
 	{
-		int data;
+		String data;
 		Node next;
-		Node(int val)
+		Node(String val)
 		{
 			data=val;
 			next=null;
 		}
 	}
 	
-	public void addNodeAtFirst(int value)
+	public void addNodeAtFirst(String value)
 	{
 		Node node=new Node(value);
 		if(head==null)
@@ -26,7 +29,7 @@ public class LinkedList {
 		}
 	}
 	
-	public void addNodeAtLast(int value)
+	public void addNodeAtLast(String value)
 	{
 		Node node =new Node(value);
 		Node n=head;
@@ -36,7 +39,7 @@ public class LinkedList {
 		
 	}
 	
-	public void addNewNode(int position, int value)
+	public void addNewNode(int position, String value)
 	{
 		if(position==1)
 		{
@@ -129,61 +132,47 @@ public class LinkedList {
 		Node q=n.next;
 		q.next=n;
 		n.next=null;
-		
-		
 	}
-	public void swap(int data1, int data2)
+	public boolean isPalindrome(Node n)
 	{
-		if(data1==data2)
-			return;
-		Node n=head;
-		Node temp=null;
-		Node temp1=null;
-		if(n.data==data1)
-			temp=head;
-		else if(n.data==data2)
-			temp1=head;
-		while(n.next!=null)
+		Stack slack=new Stack();
+		Node node=n;
+		while(node!=null)
 		{
-			
-			if(n.next.data==data1) {
-				temp=n;
-			}else if(n.next.data==data2) {
-				temp1=n;
-			}
+			slack.push(node.data);
+			node=node.next;
+		}
+		
+		while(n!=null)
+		{
+			if(!slack.pop().equals(n.data))
+				return false;
 			n=n.next;
 			
 		}
-		
-		swap1(temp,temp1);
-	}
-	void swap1(Node temp,Node temp1)
-	{
-	Node currX=temp.next;                                                                  ;
-	Node nextNodeX=temp.next.next;
-	Node currY=temp1.next;
-	Node nextNodeY=temp1.next.next;
-	temp.next=currY;
-	currY.next=nextNodeX;
-	temp1.next=currX;
-	currX.next=nextNodeY;
+		return true;
 	}
 	
 	public static void main(String[] args) {
 		LinkedList list=new LinkedList();
-		list.addNodeAtFirst(10);
-		list.addNodeAtFirst(20);
-		list.addNodeAtLast(100);
-		list.addNewNode(2, 15);
-		list.addNewNode(5,30);
-		list.addNewNode(1, 12);
+		list.addNodeAtFirst("R");
+		list.addNewNode(2, "A");
+		list.addNewNode(3, "F");
+		list.addNewNode(4, "B");
+		list.addNewNode(5, "R");
+//		list.addNodeAtFirst(10);
+//		list.addNodeAtFirst(20);
+//		list.addNodeAtLast(100);
+//		list.addNewNode(2, 15);
+//		list.addNewNode(5,30);
+//		list.addNewNode(1, 12);
 		//list.deleteNode(3);
 		//list.deleteFirstNode();
 		//list.deleteLastNode();
 		list.display();
 		System.out.println("--------------------");
-		list.swap(12,100);
-		list.display();
+		System.out.println(list.isPalindrome(list.head));
+		//list.display();
 		//list.reverseList(list.head);
 		//list.reverseListByRecursion(list.head);
 		//list.display();
