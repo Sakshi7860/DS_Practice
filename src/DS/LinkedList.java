@@ -6,16 +6,16 @@ public class LinkedList {
 	Node head;
 	class Node
 	{
-		String data;
+		int data;
 		Node next;
-		Node(String val)
+		Node(int val)
 		{
 			data=val;
 			next=null;
 		}
 	}
 	
-	public void addNodeAtFirst(String value)
+	public void addNodeAtFirst(int value)
 	{
 		Node node=new Node(value);
 		if(head==null)
@@ -29,7 +29,7 @@ public class LinkedList {
 		}
 	}
 	
-	public void addNodeAtLast(String value)
+	public void addNodeAtLast(int value)
 	{
 		Node node =new Node(value);
 		Node n=head;
@@ -39,7 +39,7 @@ public class LinkedList {
 		
 	}
 	
-	public void addNewNode(int position, String value)
+	public void addNewNode(int position, int value)
 	{
 		if(position==1)
 		{
@@ -153,13 +153,68 @@ public class LinkedList {
 		return true;
 	}
 	
+	public void LengthOfList(Node n)
+	{
+		Node node=n;
+		Node p=node;
+		Node q=node;
+		while(true)
+		{
+			p=p.next.next;
+			if(p==null) {
+				System.out.println("even");
+				break;
+			}
+			else if(p.next==null) {
+				System.out.println("odd");
+				break;
+			}
+			
+		}
+	}
+	public void swapInPairs(Node n)
+	{
+		Node prev=null;
+		Node current=null;
+		current=n;
+		int i=1;
+		while(current!=null)
+		{
+			if(i%2==0)
+			{
+				Node temp=current.next;
+				current.next=prev;
+				prev.next=temp;
+				if(i==2)
+					head=current;
+				prev=current;
+				prev=prev.next;
+			}
+			else
+			{
+			prev=current;
+			current=current.next;
+			i++;
+		}
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		LinkedList list=new LinkedList();
-		list.addNodeAtFirst("R");
-		list.addNewNode(2, "A");
-		list.addNewNode(3, "F");
-		list.addNewNode(4, "B");
-		list.addNewNode(5, "R");
+		list.addNodeAtFirst(1);
+		list.addNewNode(2, 3);
+		list.addNewNode(3, 2);
+		list.addNewNode(4, 3);
+		list.addNewNode(5, 5);
+		list.addNewNode(6, 4);
+		list.addNodeAtLast(5);
+//		LinkedList list2=new LinkedList();
+//		list2.addNodeAtFirst("M");
+//		list.addNewNode(2, "N");
+//		list.addNewNode(3, "E");
+//		list.addNewNode(4, "E");
+		//list.addNodeAtLast("G");
 //		list.addNodeAtFirst(10);
 //		list.addNodeAtFirst(20);
 //		list.addNodeAtLast(100);
@@ -171,7 +226,10 @@ public class LinkedList {
 		//list.deleteLastNode();
 		list.display();
 		System.out.println("--------------------");
-		System.out.println(list.isPalindrome(list.head));
+		//System.out.println(list.isPalindrome(list.head));
+		//list.LengthOfList(list.head);
+		list.swapInPairs(list.head);
+		list.display();
 		//list.display();
 		//list.reverseList(list.head);
 		//list.reverseListByRecursion(list.head);
