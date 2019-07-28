@@ -1,5 +1,7 @@
 package DS;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class LinkedList {
@@ -86,6 +88,18 @@ public class LinkedList {
 		
 	}
 	
+	int detectLoop(Node head) {
+        Node p=head;
+        Node q=head;
+        while(q!=null && q.next!=null)
+        {
+            p=p.next;
+            q=q.next.next;
+            if(p==q)
+              return 1;
+        }
+        return 0;
+    }
 	public void display() {
 		Node n=head;
 		while(n!=null)
@@ -133,6 +147,24 @@ public class LinkedList {
 		q.next=n;
 		n.next=null;
 	}
+	public Node rotate(Node head, int k) {
+        Node temp=head;
+        Node root=head;
+        while(temp.next!=null)
+            temp=temp.next;
+        temp.next=root;
+        Node end=null;
+        while(k!=0)
+        {
+            end=root;
+            root=root.next;
+            k--;
+        }
+        end.next=null;
+        return root;
+        
+    }
+	
 	public boolean isPalindrome(Node n)
 	{
 		Stack slack=new Stack();
@@ -152,6 +184,19 @@ public class LinkedList {
 		}
 		return true;
 	}
+	 int getMiddle(Node head)
+	   {
+	        Node p=head;
+	        Node q=head;
+	        while(q!=null && q.next!=null)
+	        {
+	            p=p.next;
+	            q=q.next.next;
+	        }
+	        return p.data;
+	        
+	        
+	   }
 	
 	public void LengthOfList(Node n)
 	{
@@ -172,6 +217,106 @@ public class LinkedList {
 			
 		}
 	}
+	//Ist method
+	int getNthFromLast1(Node head, int n)
+    {
+    	Node node=head;
+    	Node node1=head;
+    	int count=0;
+    	while(node!=null)
+    	{
+    	    node=node.next;
+    	    count++;
+    	}
+    	if(n>count)
+    	    return -1;
+    	int index=count-n;
+    	while(index!=0)
+    	{
+    	    node1=node1.next;
+    	    index--;
+    	}
+    	return node1.data;
+    }
+	//2nd Method
+	int getNthFromLast(Node head, int n)
+    {
+        Node p=head;
+        Node q=head;
+        Node node=head;
+        int num=1;
+        while(node.next!=null)
+        {
+            node=node.next;
+            num++;
+        }
+        //to check whether the given number is greater than lenght of linked list or not
+        if(n>num)
+            return -1;
+        int count=n-1;
+        while(count!=0)
+        {
+            q=q.next;
+            count--;
+        }
+        while(q.next!=null)
+        {
+            p=p.next;
+            q=q.next;
+        }
+        return p.data;
+    }
+	//Merge Two Sorted Linked List
+	Node sortedMerge(Node headA, Node headB) {
+	     Node node1=headA;
+	     Node node2=headB;
+	      Node merge=null;
+	      Node merge1=null;
+	     if(node1==null && node2 ==null)
+	        return null;
+	     else if(node1==null)
+	        return node2;
+	     else if(node2==null)
+	        return node1;
+	     else
+	     {
+	        if(node1.data<=node2.data)
+	         {
+	            merge=node1;
+	            node1=node1.next;
+	         }
+	         else
+	         {
+	            merge=node2;
+	            node2=node2.next;
+	         }
+	         merge1=merge;
+	          while(node1!=null && node2!=null)
+	          {
+	              if(node1.data<=node2.data)
+	            {
+	                 merge.next=node1;
+	                node1=node1.next;
+	            }
+	            else
+	            {
+	                merge.next=node2;
+	                node2=node2.next;
+	            }
+	            merge=merge.next;
+	          }
+	          if(node2!=null)
+	          {
+	              merge.next=node2;
+	          }
+	          if(node1!=null)
+	             merge.next=node1;
+	             
+	        
+	     }
+	     return merge1;
+	   } 
+	//Ist Method
 	public void swapInPairs(Node n)
 	{
 		Node prev=null;
@@ -191,24 +336,39 @@ public class LinkedList {
 				prev=prev.next;
 			}
 			else
-			{
+			{	
 			prev=current;
 			current=current.next;
 			i++;
-		}
+			}
 		}
 	}
 	
+	//2nd method
+	public static void pairwiseSwap(Node node)
+    {
+        Node head=node;
+        Node p=head;
+        while(p!=null && p.next!=null)
+        {
+            int temp=p.data;
+            p.data=p.next.data;
+            p.next.data=temp;
+            p=p.next.next;
+            
+        }
+       
+    }
 	
 	public static void main(String[] args) {
 		LinkedList list=new LinkedList();
 		list.addNodeAtFirst(1);
-		list.addNewNode(2, 3);
-		list.addNewNode(3, 2);
-		list.addNewNode(4, 3);
+		list.addNewNode(2, 2);
+		list.addNewNode(3, 3);
+		list.addNewNode(4, 4);
 		list.addNewNode(5, 5);
-		list.addNewNode(6, 4);
-		list.addNodeAtLast(5);
+		list.addNewNode(6, 6);
+		list.addNodeAtLast(7);
 //		LinkedList list2=new LinkedList();
 //		list2.addNodeAtFirst("M");
 //		list.addNewNode(2, "N");
@@ -225,11 +385,12 @@ public class LinkedList {
 		//list.deleteFirstNode();
 		//list.deleteLastNode();
 		list.display();
+		System.out.println("middle is "+list.getMiddle(list.head));
 		System.out.println("--------------------");
 		//System.out.println(list.isPalindrome(list.head));
 		//list.LengthOfList(list.head);
-		list.swapInPairs(list.head);
-		list.display();
+	//	list.swapInPairs(list.head);
+		//list.display();
 		//list.display();
 		//list.reverseList(list.head);
 		//list.reverseListByRecursion(list.head);
@@ -237,7 +398,6 @@ public class LinkedList {
 		//System.out.println("--------");
 		//list.reversedisplay(list.head);
 		//list.traverse(list.head);
-
 	}
 
 }

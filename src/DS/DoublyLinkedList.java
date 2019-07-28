@@ -1,4 +1,4 @@
-package DS;
+  package DS;
 
 public class DoublyLinkedList {
 	Node head;
@@ -135,8 +135,10 @@ public class DoublyLinkedList {
 			 node= node.prev;
 		}
 		if(temp!=null)
+		{
 			temp=temp.prev;
-		head=temp;
+			head=temp;
+		}
 		
 		
 	}
