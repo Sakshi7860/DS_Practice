@@ -13,7 +13,7 @@ public class NumberFollowingPattern {
 //			System.out.println(str1[j]);
 		 for(int j1=str1.length-1;j1>0;j1--)
               s1+=str1[j1]+".";
-          s1+=str1[0];å
+          s1+=str1[0];
           
          System.out.println(s1);
 		Stack<Integer> stack=new Stack<>();

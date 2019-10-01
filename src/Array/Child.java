@@ -20,7 +20,7 @@ public class Child extends Parent{
 		System.out.println("decremented");
 	}
 	public static void main(String[] args) {
-		Parent pr=new Child();
+		Parent pr=new Parent();
 		((Child)(pr)).decrement();
 		pr.display();
 		pr.increment();

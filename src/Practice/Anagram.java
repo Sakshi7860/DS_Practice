@@ -5,6 +5,7 @@ import java.util.*;
 class Anagram { 
 	
 	
+	
 	//(Use Sorting)
 //	 static boolean areAnagram(char[] str1, char[] str2) 
 //	    { 
@@ -67,7 +68,7 @@ class Anagram {
     } 
   
     /* Driver program to test to print printDups*/
-    public static void main(String args[]) 
+    public static void main(String args[]) throws ClassNotFoundException 
     { 
         char str1[] = ("geeksforgeeks").toCharArray(); 
         char str2[] = ("forgeeksgeeks").toCharArray(); 

@@ -1,8 +1,11 @@
 package Practice;
 
+import java.util.ArrayList;
+
 public class CandyCrush {
 
 	public static void main(String[] args) {
+		
 		String s="aabbbaacccceeeddddeee";
 		String s1="";
 		char c[]=s.toCharArray();
