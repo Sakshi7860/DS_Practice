@@ -1,17 +1,18 @@
 package com.practice.HackerRankQue;
+class Node
+{
+	int data;
+	Node next;
+	Node(int val)
+	{
+		data=val;
+		next=null;
+	}
+}
 
 public class LinkedList {
 	Node root;
-	class Node
-	{
-		int data;
-		Node next;
-		Node(int val)
-		{
-			data=val;
-			next=null;
-		}
-	}
+	
 	
 	public void addNode(int value)
 	{
@@ -138,6 +139,36 @@ public class LinkedList {
 		return root;
 		
 	}
+	
+	public int findMiddleElement(Node node)
+	{
+		Node slow=node;
+		Node fast=node;
+		Node temp=null;
+		while(fast!=null && fast.next!=null)
+		{
+			temp=slow;
+			slow=slow.next;
+			fast=fast.next.next;
+		}
+		if(fast==null)
+			return temp.data;
+		return slow.data;
+	}
+	
+	public int findNodeFromLast(Node node, int k)
+	{
+		Node slow=node;
+		Node fast=node;
+		for(int i=0;i<k-1;i++)
+			slow=slow.next;
+		while(slow.next!=null)
+		{
+			slow=slow.next;
+			fast=fast.next;
+		}
+		return fast.data;
+	}
 
 	public static void main(String[] args) {
 		LinkedList list=new LinkedList();
@@ -147,16 +178,18 @@ public class LinkedList {
 		list.addNode(30);
 		list.addNode(40);
 		list.addNode(50);
-		list.addMiddle(35, 5);
-		list.addMiddle(45, 7);
-		list.addMiddle(60, 9);
+//		list.addMiddle(35, 5);
+//		list.addMiddle(45, 7);
+//		list.addMiddle(60, 9);
 		//list.removeMiddle(5);
 		//list.deleteFirst();
-		//list.deleteAtLast();
+		//list.deleteAtLast();	
 		//list.root=list.reverseLinkedList(list.root);
 		list.root=list.reverseKNodes(list.root,2);
 		list.display(list.root);
 		
+		//System.out.println("Middle Element is "+list.findMiddleElement(list.root));
+		//System.out.println("last Element is "+list.findNodeFromLast(list.root, 4));
 		
 
 	}

@@ -14,6 +14,7 @@ public class MapExercise {
 		map.put("golly", 123);
 		map.replace("sakshi", 3000);
 		System.out.println(map);
+		System.out.println(map.get("golly1"));
 
 	}
 

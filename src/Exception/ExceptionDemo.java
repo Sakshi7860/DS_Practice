@@ -28,6 +28,7 @@ public class ExceptionDemo {
 		ExceptionDemo demo=new ExceptionDemo();
 		System.out.println(demo.getMethod());
 		
+		
 
 	}
 

@@ -7,14 +7,20 @@ import java.lang.reflect.Modifier;
 
 public class ReflectionEmployee {
 
-	public static void main(String[] args) throws ClassNotFoundException, IllegalArgumentException, IllegalAccessException {
+	public static void main(String[] args) throws ClassNotFoundException, IllegalArgumentException, IllegalAccessException, InstantiationException {
+		
+		
+		
 		//Class Details
+		
+		Object o=Class.forName("Practice.Employee").newInstance();
+		System.out.println("Object Created"+o.getClass().getName());
 		Class c=Class.forName("Practice.Employee");
 		System.out.println("Name Of class is "+c.getName());
 		System.out.println(c.getSuperclass());
 		System.out.println("Name os Super Class is "+c.getSuperclass().getName());
 		Class c1[]=c.getInterfaces();
-		System.out.println(c1.length);
+		System.out.println("length is:"+c1.length);
 		for(Class c2:c1)
 		{
 			System.out.println(c2.getName());
@@ -55,7 +61,7 @@ public class ReflectionEmployee {
 		}
 		
 		//Constructor Details
-		Constructor cons[]=c.getDeclaredConstructors();
+		Constructor[] cons=c.getDeclaredConstructors();
 		for(Constructor co:cons)
 			
 		{

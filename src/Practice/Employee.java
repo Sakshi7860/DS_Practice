@@ -4,12 +4,7 @@ import java.io.Serializable;
 
 public abstract class Employee implements Serializable, Cloneable{
 	public int i=10;
-   String name="Sakshi";
-   	public Employee()
-   	{
-   		
-   
-   	}
+	String name="Sakshi";
    	public Employee (int i,String j)
    	{
    		

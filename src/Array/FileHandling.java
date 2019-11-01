@@ -14,12 +14,12 @@ public class FileHandling {
 
 	public static void main(String[] args) throws IOException {
 		File f=new File("/Users/sakshi.gupta1/Demo1.txt");
-		FileInputStream fr=new FileInputStream(f);
-		int i;
-		while((i=fr.read())!=-1)
-		{
-			System.out.println((char)i);
-		}
+		//FileInputStream fr=new FileInputStream(f);
+//		int i;
+//		while((i=fr.read())!=-1)
+//		{
+//			System.out.println((char)i);
+//		}
 		//File f1=new File("/Users/sakshi.gupta1/Demo2.txt");
 		
 		//FileWriter fw=new FileWriter(f1);
@@ -33,7 +33,19 @@ public class FileHandling {
 //		}
 //		System.out.println("");
 		
-		//FileReader fileReader=new FileReader(f);
+		FileReader fileReader=new FileReader(f);
+		BufferedReader br=new BufferedReader(fileReader);
+//		int i;
+//		while((i=fileReader.read())!=-1)
+//		{
+//			System.out.println((char)i);
+//		}
+		
+		String s;
+		while((s=br.readLine())!=null)
+		{
+			System.out.println(s);
+		}
 //		BufferedReader br=new BufferedReader(fr);
 //		BufferedWriter bw=new BufferedWriter(fw);
 //		String s;
