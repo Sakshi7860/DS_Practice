@@ -592,6 +592,39 @@ public class BinarySearchTree {
 		
 	}
 	
+	ArrayList<Integer> inOrderIterative(Node root)
+    {
+		 java.util.Stack<Node> stack =new java.util.Stack<>();
+		 ArrayList<Integer> list =new ArrayList<>();
+        Node current=root;
+        stack.push(current);
+       
+        while(true)
+        {
+            if(current.left!=null)
+            {
+                stack.push(current.left);
+                current=current.left;
+            }
+            else
+            {
+                if(!stack.isEmpty())
+                {
+                    current=stack.peek();
+                    System.out.println(current.data);
+                    list.add(current.data);
+                    stack.pop();
+                    if(current.right!=null)
+                        stack.push(current.right);
+                }
+                else
+                    break;
+            }
+            
+        }
+        return list;
+    }
+	
 	
 	
 	public static void main(String[] args) {
@@ -600,10 +633,11 @@ public class BinarySearchTree {
 		tree.root=tree.insert(tree.root,50);
 		tree.root=tree.insert(tree.root,25);
 		tree.root=tree.insert(tree.root,20);
-		tree.root=tree.insert(tree.root,22);
 		tree.root=tree.insert(tree.root,10);
 		tree.root=tree.insert(tree.root,40);
 		tree.root=tree.insert(tree.root,60);
+		tree.root=tree.insert(tree.root,55);
+		tree.root=tree.insert(tree.root,80);
 //		tree.root=tree.insert(tree.root,5);
 //		tree.inOrder(tre		e.root);
 		/*
@@ -633,7 +667,8 @@ public class BinarySearchTree {
 		 * current=current.right; }
 		 */
 		
-		tree.isSumTree(tree.root);
+//		tree.isSumTree(tree.root);
+		System.out.println(tree.inOrderIterative(tree.root));
 		
 		
 			

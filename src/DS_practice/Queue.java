@@ -26,6 +26,8 @@ public class Queue {
 	{
 		if(isEmpty())
 			System.exit(-1);
+		int data=arr[front++];
+		//System.out.println(data);
 		
 		
 	}

@@ -58,7 +58,7 @@ public class Stack {
 	
 	public boolean isFull()
 	{
-		return top==capacity?true:false;
+		return top==capacity-1?true:false;
 		
 	}
 	
@@ -68,14 +68,14 @@ public class Stack {
 	}
 
 	public static void main(String[] args) {
-		Stack stack =new Stack(5);
+		Stack stack =new Stack(2);
 		stack.push(10);
 		stack.push(20);
 		stack.push(30);
 		//stack.display();
 //		stack.pop();
 //		stack.display();
-		System.out.println(stack.peek());
+//		System.out.println(stack.peek());
 		stack.display();
 		
 		// TODO Auto-generated method stub
